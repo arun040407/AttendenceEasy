@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: attendeasy
+    env: python
+    plan: free
+    buildCommand: pip install -r requirements.txt && python seed_data.py
+    startCommand: gunicorn wsgi:app
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.0
